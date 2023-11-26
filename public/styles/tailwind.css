@@ -1,0 +1,157 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+.numbers {
+    font-size: 95px;
+}
+
+.gallery-item {
+    flex: 1;
+    margin: 0.5em;
+    position: relative;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 0.8;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.overlay-text {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
+}
+
+.modalPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 50%;
+    -webkit-box-shadow: 0 2px 10px 3px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 2px 10px 3px rgba(0, 0, 0, .2);
+    box-shadow: 0 2px 10px 3px rgba(0, 0, 0, .2);
+}
+
+
+.modalContent{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    width: 3vw;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* .loadingText {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+.myFrame {
+    z-index: 1; /* Change to a lower z-index */
+}
+
+.frame-container {
+    position: relative;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .numbers {
+        font-size: 50px;
+    }
+
+    .school {
+        font-size: 15px;
+    }
+
+    .stat-box {
+        width: 35vw;
+        height: 30vw;
+    }
+
+    .gallery-item .overlay {
+        opacity: 0.8;
+    }
+
+    .gallery-item:hover .overlay {
+        opacity: 0.8;
+    }
+
+    .modalPopup {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 80%;
+    }
+    .formContainer{
+        width: 80%;
+    }
+    #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    #scrollToTopBtn {
+        width: 10vw;
+    }
+}
