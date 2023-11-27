@@ -14,7 +14,10 @@ module.exports = {
         primaryColor: "hsl(175, 35%, 50%)",
         lighterColor: "hsl(175, 35%, 70%)",
         deeperColor: "hsl(175, 35%, 30%)"
-      }
+      },
+      fontFamily: {
+        'times': ['Times New Roman', 'serif'],
+      },
     },
   },
   plugins: [],

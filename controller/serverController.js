@@ -50,8 +50,6 @@ app.get('/', urlencodedParser, async function (req, res) {
 });
 
 
-
-
 app.get('/admin', function (req, res) {
         // Load admin view
         res.render('admin');
@@ -82,26 +80,5 @@ app.post('/update', urlencodedParser, function (req, res) {
         });
 });
 
-
-
- // Add new modal data
-// app.post('/update', urlencodedParser, function (req, res) {
-//     // Extract data from the request body
-//     const newData = req.body;
-
-//     // Create a new instance of the ModalData model
-//     const newModalData = new ModalData(newData);
-
-//     // Save the new data to the database using promises
-//     newModalData.save()
-//         .then(savedData => {
-//             // Optionally, you can render a view or send a response
-//             res.render('index', { modalData: savedData });
-//         })
-//         .catch(err => {
-//             console.error(err);
-//             res.status(500).send('Error adding modal data');
-//         });
-// });
 
 };
