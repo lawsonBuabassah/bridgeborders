@@ -38,7 +38,8 @@ $(document).ready(function () {
         var title = $('.form1 #title');
         var id = $('.form1 #_id');
         var description = $('.form1 #description');
-        var modalData = {id: '655a3ba0e05fdd05eba907f1', title: title.val(), description: description.val()};
+        var imageUrl = $('.form1 #imageUrl');
+        var modalData = {id: '655a3ba0e05fdd05eba907f1', title: title.val(), description: description.val(), imageUrl: imageUrl.val()};
   
         $.ajax({
           type: 'POST',

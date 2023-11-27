@@ -6,7 +6,7 @@ const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.json());
 
-const dbURL = "mongodb+srv://eyarko:%40password123@lawsonscluster.l1vqepq.mongodb.net/modal";
+const dbURL = "mongodb+srv://lbekkeltd:lawson2023@cluster0.hbnhxze.mongodb.net/modal";
 
 const connectionParams = {
     useNewUrlParser: true,

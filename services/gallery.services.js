@@ -1,4 +1,5 @@
-const dbURL = "mongodb+srv://eyarko:%40password123@lawsonscluster.l1vqepq.mongodb.net/gallery";
+const dbURL = "mongodb+srv://lbekkeltd:lawson2023@cluster0.hbnhxze.mongodb.net/gallery";
+
 
 const connectionParams = {
     useNewUrlParser: true,

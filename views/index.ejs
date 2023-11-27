@@ -17,7 +17,7 @@
 <body>
     <video autoplay muted loop poster="video-poster.jpg" id="background-video">
         <!-- <source src="../assets/images/bridgeVideo.webm" type="video/mp4"> -->
-        <source src="https://firebasestorage.googleapis.com/v0/b/fandome-x-5b240.appspot.com/o/bridgeVideo2.mp4?alt=media&token=1ecf72d2-8e68-41b2-b96b-d53c95565724" type="video/mp4">
+        <source src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/bridgeVideo.mp4?alt=media&token=496f2141-9607-41dd-abeb-e3b80433bc73" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <button class="bg-deeperColor" id="scrollToTopBtn">&UpArrow;</button>
@@ -352,15 +352,16 @@
 <!-- Modal Popup -->
 <div id="modalOverlay">
     <div class="modalPopup flex flex-col rounded-lg md:flex-row">
-        <div class="hidden m-5 bg-cover rounded-lg flex-1 md:block" style="background-image: url('../assets/images/modal.jpg');">
-        </div>
-        <div class="modalContent flex-1">
-            <% modalData.forEach(data => { %>
-                <h1 class="font-times text-black text-center font-bold mt-5 mb-5 text-3xl md:text-4xl"><%= data.title %></h1>
-                <p class="font-times text-center text-gray-600 font-semibold ml-4 text-lg"><%= data.description %></p>
-                <button class="font-times buttonStyle self-center px-8 py-2 mt-4 text-lg font-bold text-white bg-deeperColor rounded-lg baseline hover:bg-lighterColor" id="button">Close</button>
-            <% }); %>
-        </div>
+        <% modalData.forEach(data => { %>
+            <div class="hidden m-5 bg-cover rounded-lg flex-1 md:block" style="background-image: url('../assets/images/modal.jpg');">
+            </div>
+            <div class="modalContent flex-1">
+                
+                    <h1 class="font-times text-black text-center font-bold mt-5 mb-5 text-3xl md:text-4xl"><%= data.title %></h1>
+                    <p class="font-times text-center text-gray-600 font-semibold ml-4 text-lg"><%= data.description %></p>
+                    <button class="font-times buttonStyle self-center px-8 py-2 mt-4 text-lg font-bold text-white bg-deeperColor rounded-lg baseline hover:bg-lighterColor" id="button">Close</button>
+            </div>
+        <% }); %>
     </div>
 </div>
 
