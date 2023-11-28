@@ -29,20 +29,40 @@ const dataSchema = new Schema({
     },
     description: {
         type: String
+    },
+    imageUrl: {
+        type: String
     }
 }, { timestamps: true });
 
 const ModalData = mongoose.model('Data', dataSchema);
+
+const gallerySchema = new Schema({
+    title: {
+        type: String
+    },
+    imageUrl: {
+        type: String
+    }
+}, { timestamps: false });
+
+const GalleryData = mongoose.model('gallery', gallerySchema);
 
 module.exports = function (app) {
 // Fetch modal details
 app.get('/', urlencodedParser, async function (req, res) {
     try {
         // Get data from MongoDB
-        const data = await ModalData.find({}).exec();
+        const myModalData = await ModalData.find({}).exec();
+        const myGalleryData = await GalleryData.find({}).exec();
+
+        const combinedData = {
+            modalData: myModalData,
+            galleryData: myGalleryData,
+        };
 
         // Render the view with the data
-        res.render('index', { modalData: data });
+        res.render('index', { data: combinedData });
     } catch (err) {
         console.error(err);
         res.status(500).send('Error fetching modal data');
@@ -61,7 +81,7 @@ app.get('/gpt', function (req, res) {
 });
 
     // Update modal data by ID
-app.post('/update', urlencodedParser, function (req, res) {
+app.post('/updateModal', urlencodedParser, function (req, res) {
     // Update modal data
     const modalId = req.params.id;
     const updateData = req.body;
@@ -72,7 +92,7 @@ app.post('/update', urlencodedParser, function (req, res) {
             if (!updatedData) {
                 return res.status(404).send('Modal data not found');
             }
-            res.render('index', { modalData: updatedData });
+            res.render('admin');
         })
         .catch(err => {
             console.error(err);
@@ -80,5 +100,24 @@ app.post('/update', urlencodedParser, function (req, res) {
         });
 });
 
+//add gallery image
+app.post('/addToGallery', urlencodedParser, function (req, res) {
+    // Extract data from the request body
+    const newData = req.body;
+
+    // Create a new instance of the ModalData model
+    const newGalleryImage = new GalleryData(newData);
+
+    // Save the new data to the database using promises
+    newGalleryImage.save()
+        .then(savedData => {
+            // Optionally, you can render a view or send a response
+            res.render('admin');
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send('Error adding gallery image');
+        });
+});
 
 };

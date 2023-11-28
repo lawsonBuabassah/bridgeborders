@@ -288,108 +288,25 @@
     <!-- Medium Screen and above -->
       <div id="carousel" class="overflow-hidden hidden relative md:block">
         <div class="flex transition-transform duration-300">
-            <img src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-38.jpg?alt=media&token=1dd9ea05-6bc8-4768-aa42-6de08d805301" class="w-1/2 p-2 md:w-1/3"/>
-            <img src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-42.jpg?alt=media&token=3117450b-06a8-4362-8ffe-554a3df213d3" class="w-1/2 p-2 md:w-1/3"/>
-            <img src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-45.jpg?alt=media&token=a6d4239f-ca61-4a5a-9d43-95ee258b7521" class="w-1/2 p-2 md:w-1/3"/>
-            <img src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-48.jpg?alt=media&token=96dd4271-aa2f-4b72-98d9-02c8bb112d12" class="w-1/2 p-2 md:w-1/3"/>
-            <img src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-56-17.jpg?alt=media&token=69253c59-6772-43cf-91dd-52c18df30fc4" class="w-1/2 p-2 md:w-1/3"/>
+          <% data.galleryData.forEach(galleryItem => { %>
+            <img src="<%= galleryItem.imageUrl %>" class="w-1/2 p-2 md:w-1/3"/>
+          <% }); %>          
         </div>
       </div>
       <!-- Small Screen only -->
       <div class="bg-white flex flex-col justify-center items-center md:hidden">
-        <div 
-          class="max-w-4xl mx-auto relative"
-          x-data="{ activeSlide: 1, totalSlides: 5 }"
-        >
-          <!-- Slides -->
-          <div x-show="activeSlide === 1" class="h-64 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-38.jpg?alt=media&token=1dd9ea05-6bc8-4768-aa42-6de08d805301" 
-              alt="Slide 1" 
-              class="object-cover w-full h-full"
-            />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <!-- Additional content or styling can be added here -->
-            </div>
+
+      <div class="carousel"> 
+        <% data.galleryData.forEach((galleryItem, index) => { %>
+          <div class="carousel-item <%= index === 0 ? 'active' : '' %>"> 
+            <div class="slide-image"> 
+              <img src="<%= galleryItem.imageUrl %>" class="carouselImage"/>
+            </div> 
           </div>
-      
-          <div x-show="activeSlide === 2" class="h-64 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-42.jpg?alt=media&token=3117450b-06a8-4362-8ffe-554a3df213d3" 
-              alt="Slide 2" 
-              class="object-cover w-full h-full"
-            />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <!-- Additional content or styling can be added here -->
-            </div>
-          </div>
-      
-          <div x-show="activeSlide === 3" class="h-64 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-45.jpg?alt=media&token=a6d4239f-ca61-4a5a-9d43-95ee258b7521" 
-              alt="Slide 3" 
-              class="object-cover w-full h-full"
-            />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <!-- Additional content or styling can be added here -->
-            </div>
-          </div>
-      
-          <div x-show="activeSlide === 4" class="h-64 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-48.jpg?alt=media&token=96dd4271-aa2f-4b72-98d9-02c8bb112d12" 
-              alt="Slide 4" 
-              class="object-cover w-full h-full"
-            />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <!-- Additional content or styling can be added here -->
-            </div>
-          </div>
-      
-          <div x-show="activeSlide === 5" class="h-64 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-56-17.jpg?alt=media&token=69253c59-6772-43cf-91dd-52c18df30fc4" 
-              alt="Slide 5" 
-              class="object-cover w-full h-full"
-            />
-            <div class="absolute inset-0 flex items-center justify-center">
-              <!-- Additional content or styling can be added here -->
-            </div>
-          </div>
-      
-          <!-- Prev/Next Arrows -->
-          <div class="absolute inset-0 flex">
-            <div class="flex items-center justify-start w-1/2">
-              <button 
-                class="bg-deeperColor text-white hover:text-orange-500 font-bold hover:shadow-lg rounded-full w-12 h-12 -ml-6"
-                x-on:click="activeSlide = activeSlide === 1 ? totalSlides : activeSlide - 1"
-              >
-                &#8592;
-              </button>
-            </div>
-            <div class="flex items-center justify-end w-1/2">
-              <button 
-                class="bg-deeperColor text-white hover:text-orange-500 font-bold hover:shadow rounded-full w-12 h-12 -mr-6"
-                x-on:click="activeSlide = activeSlide === totalSlides ? 1 : activeSlide + 1"
-              >
-                &#8594;
-              </button>
-            </div>        
-          </div>
-      
-          <!-- Buttons -->
-          <div class="absolute w-full flex items-center justify-center px-4">
-            <template x-for="i in totalSlides" :key="i">
-              <button
-                class="flex-1 w-4 h-2 mt-4 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-teal-600 hover:shadow-lg"
-                :class="{ 'bg-deeperColor': activeSlide === i, 'bg-lighterColor': activeSlide !== i }" 
-                x-on:click="activeSlide = i"
-              ></button>
-            </template>
-          </div>
-        </div>
-      </div>
-      
+        <% }); %>        
+        
+    </div> 
+  </div>
       
 </section>
 <!-- Book A Meeting -->
@@ -443,8 +360,8 @@
 <!-- Modal Popup -->
 <div id="modalOverlay">
     <div class="modalPopup py-5 px-5 flex flex-col rounded-lg md:w-1/3">
-        <% modalData.forEach(data => { %>
-            <img src="https://firebasestorage.googleapis.com/v0/b/storage-project-113f8.appspot.com/o/photo_2023-11-27_23-00-31.jpg?alt=media&token=072ecc08-191b-45c3-8914-6d2b92628d24" alt="" class="flex-3 rounded-lg self-center flex-4">
+      <% data.modalData.forEach(modalItem => { %>
+            <img src="<%= modalItem.imageUrl %>" alt="" class="flex-3 rounded-lg self-center flex-4">
             <button class="flex-1 font-times buttonStyle self-center px-8 py-2 mt-4 text-lg font-bold text-white bg-deeperColor rounded-lg baseline hover:bg-lighterColor" id="button">Close</button>
             <!-- <div class="modalContent flex-1">
                 

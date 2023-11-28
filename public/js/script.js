@@ -43,8 +43,29 @@ $(document).ready(function () {
   
         $.ajax({
           type: 'POST',
-          url: '/update',
+          url: '/updateModal',
           data: modalData,
+          success: function(data){
+            location.reload();
+          }
+        });
+  
+        return false;
+  
+    });
+
+    //create data
+    $('.form2').on('submit', function(){
+    
+        var title = $('.form2 #galleryTitle');
+        // var id = $('.form2 #_id');
+        var imageUrl = $('.form2 #galleryImageUrl');
+        var galleryData = {title: title.val(), imageUrl: imageUrl.val()};
+  
+        $.ajax({
+          type: 'POST',
+          url: '/addToGallery',
+          data: galleryData,
           success: function(data){
             location.reload();
           }
@@ -74,7 +95,36 @@ $(document).ready(function () {
       document.getElementById('modalOverlay').style.display = 'none'
     };
 
-    const carousel = document.querySelector("#carousel > div");
+        let slides = 
+            document.getElementsByClassName('carousel-item'); 
+    
+        function addActive(slide) { 
+            slide.classList.add('active'); 
+        } 
+    
+        function removeActive(slide) { 
+            slide.classList.remove('active'); 
+        } 
+    
+        addActive(slides[0]); 
+        setInterval(function () { 
+            for (let i = 0; i < slides.length; i++) { 
+                if (i + 1 == slides.length) { 
+                    addActive(slides[0]); 
+                    setTimeout(removeActive, 350, slides[i]); 
+                    break; 
+                } 
+                if (slides[i].classList.contains('active')) { 
+                    setTimeout(removeActive, 350, slides[i]); 
+                    addActive(slides[i + 1]); 
+                    break; 
+                } 
+            } 
+        }, 3000); 
+    
+};
+
+const carousel = document.querySelector("#carousel > div");
 const totalImages = carousel.children.length;
 let currentIndex = 0;
 
@@ -109,6 +159,4 @@ setInterval(() => {
 }, 2000); // Change to 2000ms (2 seconds) as per your requirement
 
 
-
-};
 });
