@@ -1,21 +1,16 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "./index.js",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/flights/:path*",
-            "destination": "https://flight-frontend-smoky.vercel.app/:path*"
-        }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "source": "/flights/:path*",
+      "destination": "https://flight-frontend-smoky.vercel.app/:path*"
+    },
+    { "src": "/(.*)", "dest": "/" }
+  ]
 }
