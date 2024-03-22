@@ -11,5 +11,11 @@
             "src": "/(.*)",
             "dest": "/"
         }
+    ],
+    "rewrites": [
+        {
+            "source": "/flights/:path*",
+            "destination": "https://flight-frontend-smoky.vercel.app/:path*"
+        }
     ]
 }
