@@ -6,11 +6,5 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "source": "/flights/:path*",
-      "destination": "https://flight-frontend-smoky.vercel.app/:path*"
-    },
-    { "src": "/(.*)", "dest": "/" }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "/" }]
 }
