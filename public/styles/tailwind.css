@@ -81,7 +81,7 @@
 #scrollToTopBtn {
     display: none;
     position: fixed;
-    bottom: 150px;
+    bottom: 200px;
     right: 20px;
     padding: 10px;
     width: 3vw;
@@ -91,6 +91,7 @@
     cursor: pointer;
     z-index: 9999;
 }
+
 
 .center-container {
     display: flex;
