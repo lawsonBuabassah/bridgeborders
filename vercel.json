@@ -2,6 +2,10 @@
   "version": 2,
   "builds": [
     {
+      "source": "/flights/:path*",
+      "destination": "https://www.bbflights.org/:path*"
+    },
+    {
       "src": "./index.js",
       "use": "@vercel/node"
     }
